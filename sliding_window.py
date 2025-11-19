@@ -28,10 +28,11 @@ shortest_array = 100000
 
 for right in range(len(nums)):
     sum += nums[right]
-    if sum >= target:
+    if sum >= target: #Keep moving right until the sum is either equal to or larger than the target
         while sum >= target:
-            shortest_array = min(shortest_array, right - left + 1)
-            sum -= nums[left]
+            shortest_array = min(shortest_array, right - left + 1) # Store the shortest array
+            sum -= nums[left] # Remove the value of the first value of the window and increment left by 1, we know have one less value in the window. Rerun the condition in the while
+                              # loop to see if the sum is still above the target. if it is we can update the shortest array again
             left += 1
 
 
